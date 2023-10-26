@@ -240,12 +240,13 @@ public class PizzApp extends javax.swing.JFrame {
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
          int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
         int pizzaAlapAr;
+        
         if(pizzaIndex == 0){
             pizzaAlapAr = 1590;
         }
         else if (pizzaIndex == 1){
             pizzaAlapAr = 1680;
-        }else if (pizzaIndex == 1){
+        }else if (pizzaIndex == 2){
             pizzaAlapAr = 1750;
         }else{
             pizzaAlapAr = 2000;
@@ -265,7 +266,7 @@ public class PizzApp extends javax.swing.JFrame {
         
         int vegsoAr = pizzaAlapAr * meret + extrak;
         vegsoAr *= db;
-        
+        lblAr.setText(vegsoAr + "");
         
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
