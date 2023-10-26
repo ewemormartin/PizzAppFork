@@ -2,25 +2,34 @@ package pizzapp;
 
 public class PizzApp extends javax.swing.JFrame {
 
+    int meret = 1;
+    int pizzaAlapAr;
+    int extra1 = 0;
+    int extra2 = 0;
+    int extra3 = 0;
+
+    int db = 1;
+    int extrak = extra1 + extra2 + extra3;
+
+    int vegsoAr = pizzaAlapAr * meret + extrak;
+
     public PizzApp() {
         initComponents();
-       
+
         int pizzaAlapAr2 = 1750;
-        
+
         int meret = 1;
-        
-        
-        
+
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        
+
         int db = 1;
         int extrak = extra1 + extra2 + extra3;
-        
+
         int vegsoAr = pizzaAlapAr2 * meret + extrak;
         vegsoAr *= db;
-        
+
         lblAr.setText(vegsoAr + "");
     }
 
@@ -69,10 +78,20 @@ public class PizzApp extends javax.swing.JFrame {
 
         buttonGroup1.add(rdbMeret25);
         rdbMeret25.setText("25 cm");
+        rdbMeret25.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rdbMeret25StateChanged(evt);
+            }
+        });
 
         buttonGroup1.add(rdbMeret32);
         rdbMeret32.setSelected(true);
         rdbMeret32.setText("32 cm");
+        rdbMeret32.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rdbMeret32StateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMeretLayout = new javax.swing.GroupLayout(pnlMeret);
         pnlMeret.setLayout(pnlMeretLayout);
@@ -238,43 +257,56 @@ public class PizzApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
-         int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
         int pizzaAlapAr;
-        
-        if(pizzaIndex == 0){
+
+        if (pizzaIndex == 0) {
             pizzaAlapAr = 1590;
-        }
-        else if (pizzaIndex == 1){
+        } else if (pizzaIndex == 1) {
             pizzaAlapAr = 1680;
-        }else if (pizzaIndex == 2){
+        } else if (pizzaIndex == 2) {
             pizzaAlapAr = 1750;
-        }else{
+        } else {
             pizzaAlapAr = 2000;
         }
-       
-        
+
         int meret = 1;
-        
-        
-        
+
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        
+
         int db = 1;
         int extrak = extra1 + extra2 + extra3;
-        
+
         int vegsoAr = pizzaAlapAr * meret + extrak;
         vegsoAr *= db;
         lblAr.setText(vegsoAr + "");
-        
+
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
+
+    private void rdbMeret25StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbMeret25StateChanged
+        double meret = .75;
+        double vegsoAr = pizzaAlapAr * meret + extrak;
+        vegsoAr *= db;
+
+        lblAr.setText(vegsoAr + "");
+
+    }//GEN-LAST:event_rdbMeret25StateChanged
+
+    private void rdbMeret32StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbMeret32StateChanged
+        double meret = .75;
+        double vegsoAr = pizzaAlapAr * meret + extrak;
+        vegsoAr *= db;
+
+        lblAr.setText(vegsoAr + "");
+    }//GEN-LAST:event_rdbMeret32StateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -293,7 +325,6 @@ public class PizzApp extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PizzApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
