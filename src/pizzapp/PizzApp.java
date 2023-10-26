@@ -6,6 +6,7 @@ public class PizzApp extends javax.swing.JFrame {
         initComponents();
        
         int pizzaAlapAr2 = 1750;
+        
         int meret = 1;
         
         
@@ -19,6 +20,7 @@ public class PizzApp extends javax.swing.JFrame {
         
         int vegsoAr = pizzaAlapAr2 * meret + extrak;
         vegsoAr *= db;
+        
         lblAr.setText(vegsoAr + "");
     }
 
@@ -57,6 +59,11 @@ public class PizzApp extends javax.swing.JFrame {
 
         cmdValaszthatoPizzak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Margherita", "Hawaii", "Songoku", "Diavola" }));
         cmdValaszthatoPizzak.setSelectedIndex(2);
+        cmdValaszthatoPizzak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdValaszthatoPizzakActionPerformed(evt);
+            }
+        });
 
         pnlMeret.setBorder(javax.swing.BorderFactory.createTitledBorder("Méret"));
 
@@ -229,6 +236,38 @@ public class PizzApp extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
+         int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        int pizzaAlapAr;
+        if(pizzaIndex == 0){
+            pizzaAlapAr = 1590;
+        }
+        else if (pizzaIndex == 1){
+            pizzaAlapAr = 1680;
+        }else if (pizzaIndex == 1){
+            pizzaAlapAr = 1750;
+        }else{
+            pizzaAlapAr = 2000;
+        }
+       
+        
+        int meret = 1;
+        
+        
+        
+        int extra1 = 0;
+        int extra2 = 0;
+        int extra3 = 0;
+        
+        int db = 1;
+        int extrak = extra1 + extra2 + extra3;
+        
+        int vegsoAr = pizzaAlapAr * meret + extrak;
+        vegsoAr *= db;
+        
+        
+    }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
