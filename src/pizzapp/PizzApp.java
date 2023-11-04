@@ -2,12 +2,12 @@ package pizzapp;
 
 public class PizzApp extends javax.swing.JFrame {
 
-    int meret = 1;
     int pizzaAlapAr;
+    int meret = 1;
     int extra1 = 0;
     int extra2 = 0;
     int extra3 = 0;
-
+    
     int db = 1;
     int extrak = extra1 + extra2 + extra3;
 
@@ -15,21 +15,17 @@ public class PizzApp extends javax.swing.JFrame {
 
     public PizzApp() {
         initComponents();
-
-        int pizzaAlapAr2 = 1750;
-
-        int meret = 1;
-
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
-
-        int db = 1;
-        int extrak = extra1 + extra2 + extra3;
-
-        int vegsoAr = pizzaAlapAr2 * meret + extrak;
+        Kiiras();
         vegsoAr *= db;
 
+        lblAr.setText(vegsoAr + "");
+
+    }
+
+    private void Kiiras() {
+        extrak = extra1 + extra2 + extra3;
+        vegsoAr = pizzaAlapAr * meret + extrak;
+        vegsoAr *= db;
         lblAr.setText(vegsoAr + "");
     }
 
@@ -78,18 +74,18 @@ public class PizzApp extends javax.swing.JFrame {
 
         buttonGroup1.add(rdbMeret25);
         rdbMeret25.setText("25 cm");
-        rdbMeret25.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rdbMeret25StateChanged(evt);
+        rdbMeret25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret25ItemStateChanged(evt);
             }
         });
 
         buttonGroup1.add(rdbMeret32);
         rdbMeret32.setSelected(true);
         rdbMeret32.setText("32 cm");
-        rdbMeret32.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rdbMeret32StateChanged(evt);
+        rdbMeret32.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret32ItemStateChanged(evt);
             }
         });
 
@@ -158,10 +154,25 @@ public class PizzApp extends javax.swing.JFrame {
         pnlExtrak.setBorder(javax.swing.BorderFactory.createTitledBorder("Extrák"));
 
         chbSajt.setText("sajt");
+        chbSajt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbSajtActionPerformed(evt);
+            }
+        });
 
         chbHagyma.setText("hagyma");
+        chbHagyma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbHagymaActionPerformed(evt);
+            }
+        });
 
         chbAnanasz.setText("ananász");
+        chbAnanasz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbAnanaszActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlExtrakLayout = new javax.swing.GroupLayout(pnlExtrak);
         pnlExtrak.setLayout(pnlExtrakLayout);
@@ -191,6 +202,16 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnRendelMousePressed(evt);
+            }
+        });
+        btnRendel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRendelActionPerformed(evt);
+            }
+        });
 
         lblOsszesito.setText("Összestő:");
 
@@ -257,8 +278,9 @@ public class PizzApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
+        
         int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
-        int pizzaAlapAr;
+
 
         if (pizzaIndex == 0) {
             pizzaAlapAr = 1590;
@@ -269,38 +291,83 @@ public class PizzApp extends javax.swing.JFrame {
         } else {
             pizzaAlapAr = 2000;
         }
-
-        int meret = 1;
-
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
-
-        int db = 1;
-        int extrak = extra1 + extra2 + extra3;
-
-        int vegsoAr = pizzaAlapAr * meret + extrak;
-        vegsoAr *= db;
         lblAr.setText(vegsoAr + "");
-
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
+    
+    private void btnRendelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMousePressed
 
-    private void rdbMeret25StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbMeret25StateChanged
+
+    }//GEN-LAST:event_btnRendelMousePressed
+
+    private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
+
         double meret = .75;
         double vegsoAr = pizzaAlapAr * meret + extrak;
         vegsoAr *= db;
-
         lblAr.setText(vegsoAr + "");
+        
+    }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
-    }//GEN-LAST:event_rdbMeret25StateChanged
-
-    private void rdbMeret32StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbMeret32StateChanged
-        double meret = .75;
+    private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
+        double meret = 1;
         double vegsoAr = pizzaAlapAr * meret + extrak;
         vegsoAr *= db;
-
         lblAr.setText(vegsoAr + "");
-    }//GEN-LAST:event_rdbMeret32StateChanged
+    }//GEN-LAST:event_rdbMeret32ItemStateChanged
+
+    private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
+        if (extra1 == 0) {
+            extra1 = 250;
+        } else {
+            extra1 = 0;
+        }
+        Kiiras();
+    }//GEN-LAST:event_chbSajtActionPerformed
+
+    private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
+        if (extra2 == 0) {
+            extra2 = 250;
+        } else {
+            extra2 = 0;
+        }
+        Kiiras();
+    }//GEN-LAST:event_chbHagymaActionPerformed
+
+    private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
+        if (extra3 == 0) {
+            extra3 = 250;
+        } else {
+            extra3 = 0;
+        }
+        Kiiras();
+    }//GEN-LAST:event_chbAnanaszActionPerformed
+
+    private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
+        String üzenet = "";
+        üzenet += "A választott pizza: " + cmdValaszthatoPizzak.getSelectedItem() + " (" + db + " db)";
+        üzenet += "mérete: ";
+
+        if (meret == 1) {
+            üzenet += "32 cm";
+        } else {
+            üzenet += "25 cm";
+        }
+
+        üzenet += "feltétek: ";
+
+        if (extra1 != 0) {
+            üzenet += "-sajt";
+        }
+
+        if (extra2 != 0) {
+            üzenet += "-hagyma";
+        }
+
+        if (extra3 != 0) {
+            üzenet += "-ananász";
+        }
+        txaOsszesito.setText(üzenet);
+    }//GEN-LAST:event_btnRendelActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
